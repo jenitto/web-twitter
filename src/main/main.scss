@@ -1,0 +1,29 @@
+$compName: "main";
+
+.#{$compName} {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: repeat(2, 40vh) 20vh;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  &__following {
+    grid-area: 1 / 1 / 2 / 2;
+    background: red;
+  }
+
+  &__follow {
+    grid-area: 2 / 1 / 3 / 2;
+    background: blue;
+  }
+
+  &__timeline {
+    grid-area: 1 / 2 / 3 / 3;
+    background: gray;
+  }
+
+  &__message {
+    grid-area: 3 / 2 / 4 / 3;
+    background: yellow;
+  }
+}
