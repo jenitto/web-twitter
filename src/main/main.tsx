@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./main.scss";
 
 function Main() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState<boolean>(true);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
-  const getData = async () => {
-    setLoading(true);
-    // fetch
-    // setData
-    setLoading(false);
-  };
+  // const getData = async () => {
+  //   setLoading(true);
+  //   // fetch
+  //   // setData
+  //   setLoading(false);
+  // };
 
   return (
     <div className="main">
