@@ -1,3 +1,26 @@
+# React-Github-List
+
+Este es un proyecto de ejemplo, no tiene el objetivo de ser una app real.
+
+La pretensión de este proyecto es conectarse a una API que emula Twitter y hacer peticiones para conseguir información de tweets y usuarios y mostrarlos en pantalla.
+
+El proyecto ha sido montado con la build tool [Create React App](https://github.com/facebook/create-react-app).
+
+## Live app
+
+[Live app](https://web-fake-twitter.netlify.app/)
+
+## El proyecto está montado con:
+
+- [ReactJS](https://es.reactjs.org/)
+- [Typescript](https://github.com/microsoft/TypeScript)
+- [Sass](https://github.com/sass/sass)
+- [Axios](https://github.com/axios/axios)
+
+## La base de datos y la API está mockeada con:
+
+- [MockAPI.io](https://mockapi.io/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
