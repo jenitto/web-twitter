@@ -1,8 +1,8 @@
 import { UserListProps } from "./user-list.interface";
 import { User } from "../../../types/user.interface";
 import { CardUser } from "../../../commons/card-user/card-user";
-import "./user-list.scss";
 import { Title } from "../../../commons/title/title";
+import "./user-list.scss";
 
 export const UserList = ({
   title,

@@ -1,0 +1,24 @@
+@import "../../../styles/_fonts.scss";
+
+$compName: "tweet-box";
+
+.#{$compName} {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  gap: 1.6rem;
+
+  &__textarea {
+    @include primary-font-M-regular;
+    border-radius: 1.6rem;
+    padding: 1.6rem;
+    resize: none;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

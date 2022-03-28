@@ -24,7 +24,7 @@ export const CardTweet = ({
           {title && <TitleUser label={title} loading={loading}></TitleUser>}
           {subtitle && <span className="card-tweet__subtitle">{subtitle}</span>}
         </div>
-        <p>{message}</p>
+        <p className="card-tweet__message">{message}</p>
         {image && <img className="card-tweet__media" src={image} alt="" />}
       </div>
     </Card>

@@ -12,9 +12,7 @@ export const TweetList = ({
 }: TweetListProps) => {
   return (
     <div className="tweet-list">
-      <div className="tweet-list__title">
-        <Title label={title} loading={loading}></Title>
-      </div>
+      <Title label={title} loading={loading}></Title>
       <div className={`tweet-list__container ${loading ? "loading" : ""}`}>
         {tweets.map((tweet: Tweet) => (
           <CardTweet
