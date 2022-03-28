@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { Title } from "../commons/title/title";
 import { getTimeline, getUser, getUsers } from "../services/twitter-service";
 import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
-import { filterFollowed } from "../utils/user.utils";
+import { filterFollowed, filterUnfollowed } from "../utils/user.utils";
 import { Header } from "./components/header/header";
+import { UserList } from "./components/user-list/user-list";
 import "./main.scss";
 
 function Main() {
@@ -47,8 +49,22 @@ function Main() {
       <div className="main__header">
         <Header user={user} loading={loadingUser} />
       </div>
-      <div className="main__following"></div>
-      <div className="main__follow"></div>
+      <div className="main__following">
+        <UserList
+          title="Siguiendo"
+          users={filterFollowed(users)}
+          loading={loadingUsers}
+          onToggleFollow={(id) => console.warn(id)}
+        ></UserList>
+      </div>
+      <div className="main__follow">
+        <UserList
+          title="No siguiendo"
+          users={filterUnfollowed(users)}
+          loading={loadingUsers}
+          onToggleFollow={(id) => console.warn(id)}
+        ></UserList>
+      </div>
       <div className="main__timeline"></div>
       <div className="main__message"></div>
     </div>

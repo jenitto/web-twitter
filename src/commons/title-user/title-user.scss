@@ -1,0 +1,7 @@
+$compName: "title-user";
+
+.#{$compName} {
+  @include primary-font-XS-semibold;
+  display: block;
+  margin: 0 1.6rem;
+}

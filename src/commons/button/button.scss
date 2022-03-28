@@ -14,6 +14,8 @@ $compName: "button";
   border: 0;
   outline: none;
   border: 1px solid $info200;
+  border-radius: 1.6rem;
+  max-height: 2.4rem;
 
   &:hover:not(:disabled) {
     cursor: pointer;
@@ -29,7 +31,7 @@ $compName: "button";
   }
 
   &__label {
-    @include primary-font-S-extrabold;
+    @include primary-font-XS-extrabold;
     text-transform: uppercase;
     z-index: 1;
   }
