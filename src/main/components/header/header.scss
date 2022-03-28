@@ -1,0 +1,15 @@
+@import "../../../styles/_fonts.scss";
+
+$compName: "header";
+
+.#{$compName} {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+
+  &__label {
+    @include primary-font-S-regular;
+    margin-right: 1.6rem;
+  }
+}

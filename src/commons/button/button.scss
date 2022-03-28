@@ -1,0 +1,41 @@
+$compName: "button";
+
+.#{$compName} {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: $info100;
+  color: $neutral900;
+  padding: 0 1.6rem;
+  margin: 0 1rem;
+  transition: background-color 0.3s ease;
+  border: 0;
+  outline: none;
+  border: 1px solid $info200;
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: 1px solid #fff;
+    box-shadow: $boxShadow;
+  }
+
+  &__label {
+    @include primary-font-S-extrabold;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  /*ripple effect*/
+  &:not(:disabled) {
+    @include ripple();
+  }
+}

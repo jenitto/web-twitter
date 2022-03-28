@@ -1,0 +1,20 @@
+$compName: "avatar";
+
+.#{$compName} {
+  height: $spacer-3xl;
+  width: $spacer-3xl;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &__loader {
+    background: $loading;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

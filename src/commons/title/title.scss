@@ -1,0 +1,7 @@
+$compName: "title";
+
+.#{$compName} {
+  @include primary-font-M-semibold;
+  display: block;
+  margin: 1.6rem;
+}

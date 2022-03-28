@@ -9,7 +9,6 @@ $compName: "main";
 
   &__header {
     grid-area: 1 / 1 / 2 / 3;
-    background: teal;
   }
 
   &__following {
@@ -24,7 +23,6 @@ $compName: "main";
 
   &__timeline {
     grid-area: 2 / 2 / 4 / 3;
-    background: gray;
   }
 
   &__message {

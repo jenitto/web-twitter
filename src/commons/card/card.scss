@@ -1,0 +1,7 @@
+$compName: "card";
+
+.#{$compName} {
+  display: flex;
+  padding: $spacer-m;
+  box-shadow: $boxShadow;
+}
