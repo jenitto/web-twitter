@@ -8,7 +8,7 @@ export const Header = ({ user, loading = false }: HeaderProps) => {
     <div className="header">
       <p className="header__label">Bienvenido:</p>
       <Avatar image={user?.image} username={user?.name} loading={loading} />
-      <Title label={user?.name || ""} loading={loading} />
+      <Title label={user?.name || ""} loading={loading} spinner={false} />
     </div>
   );
 };

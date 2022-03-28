@@ -12,10 +12,11 @@ export const UserList = ({
 }: UserListProps) => {
   return (
     <div className="user-list">
-      <Title label={title}></Title>
+      <Title label={title} loading={loading}></Title>
       <div className="user-list__container">
         {users.map((user: User) => (
           <CardUser
+            key={user.id}
             title={user.name}
             image={user.image}
             loading={loading}
