@@ -1,0 +1,25 @@
+$compName: "card-tweet";
+
+.#{$compName} {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 1.6rem;
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__media {
+    width: 100%;
+    border-radius: 1.6rem;
+  }
+}

@@ -12,18 +12,18 @@ export const UserList = ({
 }: UserListProps) => {
   return (
     <div className="user-list">
-      <div className="user-list__title">
-        <Title label={title}></Title>
+      <Title label={title}></Title>
+      <div className="user-list__container">
+        {users.map((user: User) => (
+          <CardUser
+            title={user.name}
+            image={user.image}
+            loading={loading}
+            buttonLabel={user.follow ? "Unfollow" : "Follow"}
+            onClick={() => onToggleFollow(user.id)}
+          ></CardUser>
+        ))}
       </div>
-      {users.map((user: User) => (
-        <CardUser
-          title={user.name}
-          image={user.image}
-          loading={loading}
-          buttonLabel={user.follow ? "Unfollow" : "Follow"}
-          onClick={() => onToggleFollow(user.id)}
-        ></CardUser>
-      ))}
     </div>
   );
 };

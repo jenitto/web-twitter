@@ -14,7 +14,7 @@ $compName: "button";
   border: 0;
   outline: none;
   border: 1px solid $info200;
-  border-radius: 1.6rem;
+  border-radius: $borderRadius;
   max-height: 2.4rem;
 
   &:hover:not(:disabled) {

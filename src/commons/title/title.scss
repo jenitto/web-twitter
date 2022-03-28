@@ -1,7 +1,14 @@
 $compName: "title";
 
 .#{$compName} {
-  @include primary-font-M-semibold;
   display: block;
-  margin: 1.6rem;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+
+  &__label {
+    @include primary-font-M-semibold;
+    margin: 1.6rem;
+  }
 }

@@ -23,6 +23,7 @@ $compName: "main";
 
   &__timeline {
     grid-area: 2 / 2 / 4 / 3;
+    overflow-y: auto;
   }
 
   &__message {

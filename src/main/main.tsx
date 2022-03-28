@@ -5,6 +5,7 @@ import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
 import { filterFollowed, filterUnfollowed } from "../utils/user.utils";
 import { Header } from "./components/header/header";
+import { TweetList } from "./components/tweet-list/tweet-list";
 import { UserList } from "./components/user-list/user-list";
 import "./main.scss";
 
@@ -65,7 +66,13 @@ function Main() {
           onToggleFollow={(id) => console.warn(id)}
         ></UserList>
       </div>
-      <div className="main__timeline"></div>
+      <div className="main__timeline">
+        <TweetList
+          title="Timeline"
+          tweets={timeline}
+          loading={loadingTimeline}
+        />
+      </div>
       <div className="main__message"></div>
     </div>
   );
