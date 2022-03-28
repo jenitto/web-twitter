@@ -5,6 +5,7 @@ import { APITweet } from "../types/api-types/api-tweet.interface";
 import { APIUser } from "../types/api-types/api-user.interface";
 import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
+import { sortByDate } from "../utils/array.utils";
 import { httpGet } from "./http-service";
 
 export const getUser = async (id: string): Promise<User> => {
@@ -24,7 +25,11 @@ export const getTimeline = async (users: User[]): Promise<Tweet[]> => {
     .filter((user) => user.follow)
     .map((user) => getUserTweets(user.id));
   const data = await Promise.all(requests);
-  return data.flatMap((res) => res);
+  return sortByDate(
+    data.flatMap((res) => res),
+    "date",
+    true
+  );
 };
 
 export const getUserTweets = async (id: string): Promise<Tweet[]> => {
