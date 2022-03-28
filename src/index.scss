@@ -1,0 +1,13 @@
+@import "styles/_variables.scss";
+@import "styles/_mixins.scss";
+@import "styles/_fonts.scss";
+@import "commons/components.scss";
+
+body {
+  background-color: $background;
+  color: $regularFont;
+}
+
+a {
+  color: $accent200;
+}
