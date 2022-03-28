@@ -34,6 +34,7 @@ export const getTimeline = async (users: User[]): Promise<Tweet[]> => {
 
 export const getUserTweets = async (id: string): Promise<Tweet[]> => {
   const url = BASE_URL + ENDPOINTS.USERS + `/${id}` + ENDPOINTS.TWEETS;
-  const res: APITweet[] = await httpGet(url);
+  const params = { sortBy: "createdAt", order: "desc" };
+  const res: APITweet[] = await httpGet(url, params);
   return MapAPITweets(res);
 };
