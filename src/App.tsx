@@ -5,6 +5,7 @@ import { messages } from "./i18n/messages";
 import UserTimeline from "./pages/user-timeline/user-timeline";
 import Main from "./pages/main/main";
 import "./App.scss";
+import { RoutesEnum } from "./enums/routes.enum";
 
 const App = () => {
   const locale = LOCALES.ENGLISH;
@@ -17,8 +18,8 @@ const App = () => {
         defaultLocale={LOCALES.ENGLISH}
       >
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/user/:id" element={<UserTimeline />} />
+          <Route path={RoutesEnum.HOME} element={<Main />} />
+          <Route path={`${RoutesEnum.USER}/:id`} element={<UserTimeline />} />
           <Route path="*" element={<Main />} />
         </Routes>
       </IntlProvider>

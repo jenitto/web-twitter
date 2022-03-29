@@ -5,11 +5,31 @@ $compName: "header";
 .#{$compName} {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 32px;
+  box-shadow: 0 0 5px rgba(57, 63, 72, 0.3);
+
+  &__main,
+  &__user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    fill: #3aaaec;
+    height: 24px;
+    width: 24px;
+  }
+
+  &__logo {
+    height: 48px;
+    width: 48px;
+  }
 
   &__label {
     @include primary-font-S-regular;
-    margin-right: 1.6rem;
   }
 }
