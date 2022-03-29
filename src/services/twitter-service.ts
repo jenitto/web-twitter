@@ -1,12 +1,16 @@
-import { MapAPITweets } from "../adapters/tweet.adapter";
-import { MapAPIUser, MapAPIUsers } from "../adapters/user.adapter";
+import { MapAPITweet, MapAPITweets } from "../adapters/tweet.adapter";
+import {
+  MapAPIUser,
+  MapAPIUsers,
+  MapToAPIUser,
+} from "../adapters/user.adapter";
 import { BASE_URL, ENDPOINTS } from "../config/api-config";
 import { APITweet } from "../types/api-types/api-tweet.interface";
 import { APIUser } from "../types/api-types/api-user.interface";
 import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
 import { sortByDate } from "../utils/array.utils";
-import { httpGet } from "./http-service";
+import { httpGet, httpPost, httpPut } from "./http-service";
 
 export const getUser = async (id: string): Promise<User> => {
   const url = BASE_URL + ENDPOINTS.USERS + `/${id}`;
@@ -37,4 +41,20 @@ export const getUserTweets = async (id: string): Promise<Tweet[]> => {
   const params = { sortBy: "createdAt", order: "desc" };
   const res: APITweet[] = await httpGet(url, params);
   return MapAPITweets(res);
+};
+
+export const editUser = async (id: string, user: User): Promise<User> => {
+  const url = BASE_URL + ENDPOINTS.USERS + `/${id}`;
+  const res: APIUser = await httpPut(url, MapToAPIUser(user));
+  return MapAPIUser(res);
+};
+
+export const sendTweet = async (id: string, tweet: string): Promise<Tweet> => {
+  const url = BASE_URL + ENDPOINTS.USERS + `/${id}` + ENDPOINTS.TWEETS;
+  const res: APITweet = await httpPost(url, {
+    message: tweet,
+    createdAt: new Date(),
+    media: "",
+  });
+  return MapAPITweet(res);
 };

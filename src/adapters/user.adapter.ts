@@ -11,3 +11,10 @@ export const MapAPIUser = (apiUser: APIUser): User => ({
   follow: apiUser.followed,
   image: apiUser.avatar,
 });
+
+export const MapToAPIUser = (user: User): APIUser => ({
+  id: user.id,
+  name: user.name,
+  followed: user.follow,
+  avatar: user.image,
+});

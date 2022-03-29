@@ -21,7 +21,7 @@ export const UserList = ({
             image={user.image}
             loading={loading}
             buttonLabel={user.follow ? "Unfollow" : "Follow"}
-            onClick={() => onToggleFollow(user.id)}
+            onClick={() => onToggleFollow(user)}
           ></CardUser>
         ))}
       </div>

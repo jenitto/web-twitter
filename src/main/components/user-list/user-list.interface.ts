@@ -4,5 +4,5 @@ export interface UserListProps {
   title: string;
   users: User[];
   loading?: boolean;
-  onToggleFollow: (id: string) => void;
+  onToggleFollow: (user: User) => void;
 }

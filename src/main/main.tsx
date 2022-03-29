@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { getTimeline, getUser, getUsers } from "../services/twitter-service";
+import {
+  editUser,
+  getTimeline,
+  getUser,
+  getUsers,
+  sendTweet,
+} from "../services/twitter-service";
 import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
 import {
@@ -49,6 +55,17 @@ function Main() {
     setLoadingUsers(false);
   };
 
+  const _handleToggleFollowUser = (user: User) => {
+    const postUser = { ...user, follow: !user.follow };
+    editUser(user.id, postUser);
+  };
+
+  const submitTweet = (message: string) => {
+    if (user) {
+      sendTweet(user.id, message);
+    }
+  };
+
   return (
     <div className="main">
       <div className="main__header">
@@ -59,7 +76,7 @@ function Main() {
           title="Siguiendo"
           users={filterCurrentUser(filterFollowed(users), user?.id)}
           loading={loadingUsers}
-          onToggleFollow={(id) => console.warn(id)}
+          onToggleFollow={_handleToggleFollowUser}
         ></UserList>
       </div>
       <div className="main__follow">
@@ -67,7 +84,7 @@ function Main() {
           title="No siguiendo"
           users={filterCurrentUser(filterUnfollowed(users), user?.id)}
           loading={loadingUsers}
-          onToggleFollow={(id) => console.warn(id)}
+          onToggleFollow={_handleToggleFollowUser}
         ></UserList>
       </div>
       <div className="main__timeline">
@@ -78,10 +95,7 @@ function Main() {
         />
       </div>
       <div className="main__message">
-        <TweetBox
-          loading={loading}
-          onSubmit={(text: string) => console.warn(text)}
-        />
+        <TweetBox loading={loading} onSubmit={submitTweet} />
       </div>
     </div>
   );
