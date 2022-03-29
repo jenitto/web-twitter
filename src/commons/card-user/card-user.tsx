@@ -10,20 +10,41 @@ export const CardUser = ({
   buttonLabel,
   loading,
   onClick,
+  onAction,
 }: CardUserProps) => {
+  const _handleCardClick = () => {
+    if (!onClick) {
+      return;
+    }
+    onClick();
+  };
+
+  const _handleActionClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    if (!onAction) {
+      return;
+    }
+    onAction();
+  };
+
   return (
-    <Card className="card-user">
-      <div className="card-user__user">
-        {image && (
-          <Avatar image={image} username={title} loading={loading}></Avatar>
-        )}
-        {title && <TitleUser label={title} loading={loading}></TitleUser>}
-      </div>
-      {onClick && buttonLabel && (
-        <div className="card-user__button">
-          <Button label={buttonLabel} onClick={onClick}></Button>
+    <div
+      className={`card-user ${onClick ? "clickable" : ""}`}
+      onClick={_handleCardClick}
+    >
+      <Card className="card-user__card">
+        <div className="card-user__user">
+          {image && (
+            <Avatar image={image} username={title} loading={loading}></Avatar>
+          )}
+          {title && <TitleUser label={title} loading={loading}></TitleUser>}
         </div>
-      )}
-    </Card>
+        {onAction && buttonLabel && (
+          <div className="card-user__button">
+            <Button label={buttonLabel} onClick={_handleActionClick}></Button>
+          </div>
+        )}
+      </Card>
+    </div>
   );
 };

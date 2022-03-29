@@ -14,7 +14,7 @@ export const TweetBox = ({ onSubmit, loading = false }: TweetBoxProps) => {
       <textarea
         className="tweet-box__textarea"
         value={message}
-        placeholder="¿Que está pasando?"
+        placeholder={formatMessage({ id: "tweetPlaceholder" })}
         onChange={(event) => setMessage(event.target.value)}
       />
       <div className="tweet-box__actions">

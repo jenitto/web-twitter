@@ -21,6 +21,15 @@ El proyecto ha sido montado con la build tool [Create React App](https://github.
 
 - [MockAPI.io](https://mockapi.io/)
 
+## Pending
+
+- Separar más la lógica del main.tsx
+- Enrutado y nueva página con timeline de un usuario
+- Configuración Jest
+- Test unitarios de útiles
+- Test unitarios de componentes
+- Selector de idioma
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

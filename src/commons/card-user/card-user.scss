@@ -1,10 +1,20 @@
 $compName: "card-user";
 
 .#{$compName} {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &__user {
     display: flex;

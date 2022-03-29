@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
+import { useNavigate } from "react-router-dom";
 import {
   editUser,
   getTimeline,
@@ -7,22 +8,23 @@ import {
   getUsers,
   getUserTweets,
   sendTweet,
-} from "../services/twitter-service";
-import { Tweet } from "../types/tweet.interface";
-import { User } from "../types/user.interface";
-import { addItem, sortByDate, updateItem } from "../utils/array.utils";
+} from "../../services/twitter-service";
+import { Tweet } from "../../types/tweet.interface";
+import { User } from "../../types/user.interface";
+import { addItem, sortByDate, updateItem } from "../../utils/array.utils";
 import {
   filterCurrentUser,
   filterFollowed,
   filterUnfollowed,
-} from "../utils/user.utils";
-import { Header } from "./components/header/header";
-import { TweetBox } from "./components/tweet-box/tweet-box";
-import { TweetList } from "./components/tweet-list/tweet-list";
-import { UserList } from "./components/user-list/user-list";
+} from "../../utils/user.utils";
+import { Header } from "../components/header/header";
+import { TweetBox } from "../components/tweet-box/tweet-box";
+import { TweetList } from "../components/tweet-list/tweet-list";
+import { UserList } from "../components/user-list/user-list";
 import "./main.scss";
 
 function Main() {
+  const navigate = useNavigate();
   const { formatMessage } = useIntl();
 
   const [user, setUser] = useState<User>();
@@ -86,6 +88,10 @@ function Main() {
     }
   };
 
+  const _handleGoToUserTimeline = (user: User) => {
+    navigate(`/user/${user.id}`);
+  };
+
   const submitTweet = (message: string) => {
     if (!user) {
       return;
@@ -115,6 +121,7 @@ function Main() {
           title={formatMessage({ id: "welcome" })}
           users={filterCurrentUser(filterFollowed(users), user?.id)}
           loading={loadingUsers}
+          onClick={_handleGoToUserTimeline}
           onToggleFollow={_handleToggleFollowUser}
         ></UserList>
       </div>
@@ -123,6 +130,7 @@ function Main() {
           title={formatMessage({ id: "notFollow" })}
           users={filterCurrentUser(filterUnfollowed(users), user?.id)}
           loading={loadingUsers}
+          onClick={_handleGoToUserTimeline}
           onToggleFollow={_handleToggleFollowUser}
         ></UserList>
       </div>

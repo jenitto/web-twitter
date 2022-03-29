@@ -4,4 +4,5 @@ export interface CardUserProps {
   buttonLabel?: string;
   loading?: boolean;
   onClick?: any;
+  onAction?: any;
 }
