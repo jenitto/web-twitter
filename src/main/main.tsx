@@ -5,10 +5,12 @@ import {
   getTimeline,
   getUser,
   getUsers,
+  getUserTweets,
   sendTweet,
 } from "../services/twitter-service";
 import { Tweet } from "../types/tweet.interface";
 import { User } from "../types/user.interface";
+import { addItem, sortByDate, updateItem } from "../utils/array.utils";
 import {
   filterCurrentUser,
   filterFollowed,
@@ -36,10 +38,6 @@ function Main() {
     loadUsers();
   }, []);
 
-  useEffect(() => {
-    loadTimeline();
-  }, [users]);
-
   const loadUser = async () => {
     setLoadingUser(true);
     const user = await getUser("1");
@@ -52,9 +50,10 @@ function Main() {
     const users = await getUsers();
     setUsers(users);
     setLoadingUsers(false);
+    loadTimeline(users);
   };
 
-  const loadTimeline = async () => {
+  const loadTimeline = async (users: User[]) => {
     setLoadingTimeline(true);
     const following = filterFollowed(users);
     const timeline = await getTimeline(following);
@@ -62,9 +61,29 @@ function Main() {
     setLoadingTimeline(false);
   };
 
+  const loadUserTweets = async (user: User) => {
+    setLoadingTimeline(true);
+    const tweets = await getUserTweets(user.id);
+    const newTimeline = sortByDate([...timeline, ...tweets], "date", true);
+    setTimeline(newTimeline);
+    setLoadingTimeline(false);
+  };
+
   const _handleToggleFollowUser = (user: User) => {
-    const postUser = { ...user, follow: !user.follow };
+    const follow = !user.follow;
+    const postUser = { ...user, follow };
     editUser(user.id, postUser);
+    // Next is for optimistic performance
+    setUsers(updateItem(users, postUser));
+    _handleTimeline(user, follow);
+  };
+
+  const _handleTimeline = (user: User, follow: boolean) => {
+    if (follow) {
+      loadUserTweets(user);
+    } else {
+      setTimeline(timeline.filter((tweet) => tweet.author.id !== user.id));
+    }
   };
 
   const submitTweet = (message: string) => {
@@ -72,6 +91,18 @@ function Main() {
       return;
     }
     sendTweet(user.id, message);
+    // Next is for optimistic performance
+    addTweetToTimeline(user, message);
+  };
+
+  const addTweetToTimeline = (user: User, message: string) => {
+    const tweet: Tweet = {
+      id: "new",
+      date: new Date(),
+      content: message,
+      author: user,
+    };
+    setTimeline(addItem(timeline, tweet));
   };
 
   return (

@@ -4,6 +4,6 @@ export interface Tweet {
   id: string;
   date: Date;
   content: string;
-  image: string;
   author: User;
+  image?: string;
 }

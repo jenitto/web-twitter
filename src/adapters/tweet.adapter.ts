@@ -10,6 +10,6 @@ export const MapAPITweet = (apiTweet: APITweet): Tweet => ({
   id: apiTweet.id,
   date: apiTweet.createdAt,
   content: apiTweet.message,
-  image: apiTweet.media,
+  image: Number(apiTweet.id) % 2 ? apiTweet.media : "", // Mock to filter media in some cases
   author: MapAPIUser(apiTweet.author),
 });

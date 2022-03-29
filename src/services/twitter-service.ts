@@ -49,8 +49,11 @@ export const editUser = async (id: string, user: User): Promise<User> => {
   return MapAPIUser(res);
 };
 
-export const sendTweet = async (id: string, tweet: string): Promise<Tweet> => {
-  const url = BASE_URL + ENDPOINTS.USERS + `/${id}` + ENDPOINTS.TWEETS;
+export const sendTweet = async (
+  userId: string,
+  tweet: string
+): Promise<Tweet> => {
+  const url = BASE_URL + ENDPOINTS.USERS + `/${userId}` + ENDPOINTS.TWEETS;
   const res: APITweet = await httpPost(url, {
     message: tweet,
     createdAt: new Date(),

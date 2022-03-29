@@ -13,3 +13,37 @@ export const sortByDate = (array: any[], key: string, asc?: boolean): any[] =>
       return new Date(a[key]).getTime() - new Date(b[key]).getTime();
     }
   });
+
+/**
+ * Return a new array with the new item updated
+ * @param array object collection
+ * @param newItem item to modify
+ * @return object collection updated
+ */
+export const updateItem = <T extends { id: string }>(
+  array: T[],
+  newItem: T
+): T[] => {
+  const collection = [...array];
+  const index = collection.findIndex((item: T) => item.id === newItem.id);
+
+  collection[index] = newItem;
+  return collection;
+};
+
+/**
+ * Return a new array with the new item
+ * @param array object collection
+ * @param newItem item to add
+ * @param index position to be added
+ * @return object collection updated
+ */
+export const addItem = <T extends { id: string }>(
+  array: T[],
+  newItem: T,
+  index = 0
+): T[] => {
+  const collection = [...array];
+  collection.splice(index, 0, newItem);
+  return collection;
+};
