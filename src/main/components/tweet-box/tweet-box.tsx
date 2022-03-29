@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useIntl } from "react-intl";
 import Button from "../../../commons/button/button";
 import { TweetBoxProps } from "./tweet-box.interface";
 import "./tweet-box.scss";
 
 export const TweetBox = ({ onSubmit, loading = false }: TweetBoxProps) => {
+  const { formatMessage } = useIntl();
+
   const [message, setMessage] = useState<string>("");
 
   return (
@@ -17,8 +20,8 @@ export const TweetBox = ({ onSubmit, loading = false }: TweetBoxProps) => {
       <div className="tweet-box__actions">
         <span>{message.length}</span>
         <Button
-          label="Enviar"
-          disabled={!message}
+          label={formatMessage({ id: "send" })}
+          disabled={!message || loading}
           onClick={() => onSubmit(message)}
         />
       </div>

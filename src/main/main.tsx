@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 import {
   editUser,
   getTimeline,
@@ -20,6 +21,8 @@ import { UserList } from "./components/user-list/user-list";
 import "./main.scss";
 
 function Main() {
+  const { formatMessage } = useIntl();
+
   const [user, setUser] = useState<User>();
   const [users, setUsers] = useState<User[]>([]);
   const [timeline, setTimeline] = useState<Tweet[]>([]);
@@ -73,7 +76,7 @@ function Main() {
       </div>
       <div className="main__following">
         <UserList
-          title="Siguiendo"
+          title={formatMessage({ id: "welcome" })}
           users={filterCurrentUser(filterFollowed(users), user?.id)}
           loading={loadingUsers}
           onToggleFollow={_handleToggleFollowUser}
@@ -81,7 +84,7 @@ function Main() {
       </div>
       <div className="main__follow">
         <UserList
-          title="No siguiendo"
+          title={formatMessage({ id: "notFollow" })}
           users={filterCurrentUser(filterUnfollowed(users), user?.id)}
           loading={loadingUsers}
           onToggleFollow={_handleToggleFollowUser}
@@ -89,13 +92,13 @@ function Main() {
       </div>
       <div className="main__timeline">
         <TweetList
-          title="Timeline"
+          title={formatMessage({ id: "timeline" })}
           tweets={timeline}
           loading={loadingTimeline}
         />
       </div>
       <div className="main__message">
-        <TweetBox loading={loading} onSubmit={submitTweet} />
+        <TweetBox loading={loadingUser} onSubmit={submitTweet} />
       </div>
     </div>
   );

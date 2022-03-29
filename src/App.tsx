@@ -1,11 +1,20 @@
-import "./App.scss";
+import { IntlProvider } from "react-intl";
+import { LOCALES } from "./i18n/locales";
+import { messages } from "./i18n/messages";
 import Main from "./main/main";
+import "./App.scss";
 
 const App = () => {
+  const locale = LOCALES.ENGLISH;
+
   return (
-    <div>
+    <IntlProvider
+      messages={messages[locale]}
+      locale={locale}
+      defaultLocale={LOCALES.ENGLISH}
+    >
       <Main></Main>
-    </div>
+    </IntlProvider>
   );
 };
 
