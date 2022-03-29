@@ -27,35 +27,39 @@ function Main() {
   const [users, setUsers] = useState<User[]>([]);
   const [timeline, setTimeline] = useState<Tweet[]>([]);
 
-  const [loading, setLoading] = useState<boolean>(true);
   const [loadingUser, setLoadingUser] = useState<boolean>(true);
   const [loadingTimeline, setLoadingTimeline] = useState<boolean>(true);
   const [loadingUsers, setLoadingUsers] = useState<boolean>(true);
 
   useEffect(() => {
     loadUser();
+    loadUsers();
   }, []);
 
   useEffect(() => {
-    getData();
-  }, [user]);
+    loadTimeline();
+  }, [users]);
 
   const loadUser = async () => {
+    setLoadingUser(true);
     const user = await getUser("1");
     setUser(user);
     setLoadingUser(false);
   };
 
-  const getData = async () => {
-    setLoading(true);
+  const loadUsers = async () => {
+    setLoadingUsers(true);
     const users = await getUsers();
+    setUsers(users);
+    setLoadingUsers(false);
+  };
+
+  const loadTimeline = async () => {
+    setLoadingTimeline(true);
     const following = filterFollowed(users);
     const timeline = await getTimeline(following);
-    setUsers(users);
     setTimeline(timeline);
-    setLoading(false);
     setLoadingTimeline(false);
-    setLoadingUsers(false);
   };
 
   const _handleToggleFollowUser = (user: User) => {
@@ -64,9 +68,10 @@ function Main() {
   };
 
   const submitTweet = (message: string) => {
-    if (user) {
-      sendTweet(user.id, message);
+    if (!user) {
+      return;
     }
+    sendTweet(user.id, message);
   };
 
   return (
