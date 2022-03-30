@@ -5,14 +5,15 @@ const getSeconds = (ms: number) => Math.round(ms / 1000);
 
 /**
  * Return a date like Twitter format time since the item was created
- * @param datetime Created date
+ * @param timeBefore Previous date to compare
+ * @param timeAfter After date to compare (current local time if was empty)
  * @return time since
  */
-export const timeAgo = (datetime: Date): string => {
+export const timeAgo = (timeBefore: Date, timeAfter = new Date()): string => {
   let timeAgo: string;
 
-  const compareTime = new Date(datetime);
-  const nowTime = new Date();
+  const compareTime = new Date(timeBefore);
+  const nowTime = new Date(timeAfter);
   const msCompareTime = compareTime.getTime();
   const msNowTime = nowTime.getTime();
   const msDifference = msNowTime - msCompareTime;
@@ -33,8 +34,6 @@ export const timeAgo = (datetime: Date): string => {
       month: "short",
       day: "numeric",
     });
-  } else if (hours > 23) {
-    timeAgo = compareTime.toLocaleDateString();
   } else if (hours > 0) {
     timeAgo = `${hours}h`;
   } else if (minutes > 0) {
