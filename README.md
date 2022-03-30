@@ -2,13 +2,7 @@
 
 This is an example project, it is not intended to be a real app.
 
-The aim of this project is to connect to an API that emulates Twitter and make requests to obtain information on tweets and users and display them on the screen.
-
-The project has been set up with the build tool [Create React App](https://github.com/facebook/create-react-app).
-
-## Launch project
-
-To launch the project you just need git clone the projecto, npm install and npm start. The app will be instantiated at http://localhost:3000/
+The aim of this project is to connect to an API that emulates Twitter and make requests to obtain information on tweets and users and display them on screen.
 
 ## Live app
 
@@ -28,6 +22,34 @@ To launch the project you just need git clone the projecto, npm install and npm 
 ## Backend mock
 
 - [MockAPI.io](https://mockapi.io/)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/jenitto/web-twitter.git
+```
+
+Go to the project directory
+
+```bash
+  cd web-twitter
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+Webapp is served in [localhost:3000](http://localhost:3000/)
 
 ## Pending
 
