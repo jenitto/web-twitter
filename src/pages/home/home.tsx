@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import {
@@ -32,20 +32,20 @@ const Home = ({ user, loading }: HomeProps) => {
   const [loadingTimeline, setLoadingTimeline] = useState<boolean>(true);
   const [loadingUsers, setLoadingUsers] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (!user) {
-      return;
-    }
-    loadUsers();
-  }, [user]);
-
-  const loadUsers = async () => {
+  const loadUsers = useCallback(async () => {
     setLoadingUsers(true);
     const users = await getUsers();
     setUsers(users);
     setLoadingUsers(false);
     loadTimeline(users);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    loadUsers();
+  }, [user, loadUsers]);
 
   const loadTimeline = async (users: User[]) => {
     setLoadingTimeline(true);
@@ -107,7 +107,7 @@ const Home = ({ user, loading }: HomeProps) => {
     <div className="home">
       <div className="home__following">
         <UserList
-          title={formatMessage({ id: "welcome" })}
+          title={formatMessage({ id: "follow" })}
           users={filterCurrentUser(filterFollowed(users), user?.id)}
           loading={loadingUsers}
           onClick={_handleGoToUserTimeline}

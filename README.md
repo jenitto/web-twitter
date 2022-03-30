@@ -22,7 +22,7 @@ To launch the project you just need git clone the projecto, npm install and npm 
 - [Typescript](https://github.com/microsoft/TypeScript)
 - [Sass](https://github.com/sass/sass)
 - [Axios](https://github.com/axios/axios)
-- [JEST] (https://jestjs.io/)
+- [JEST](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
 ## Backend mock

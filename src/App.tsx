@@ -38,10 +38,7 @@ const App = () => {
         <Main user={user} loading={loading}>
           <Routes>
             <Route path={RoutesEnum.HOME} element={<Home user={user} />} />
-            <Route
-              path={`${RoutesEnum.USER}/:id`}
-              element={<UserTimeline user={user} />}
-            />
+            <Route path={`${RoutesEnum.USER}/:id`} element={<UserTimeline />} />
             <Route path="*" element={<Home user={user} />} />
           </Routes>
         </Main>

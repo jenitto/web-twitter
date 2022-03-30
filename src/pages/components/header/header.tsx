@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { Avatar } from "../../../commons/avatar/avatar";
 import { Title } from "../../../commons/title/title";
 import { HeaderProps } from "./header.interface";
@@ -25,7 +26,9 @@ export const Header = ({ user, loading = false }: HeaderProps) => {
         </Link>
       </div>
       <div className="header__user">
-        <p className="header__label">Bienvenido:</p>
+        <p className="header__label">
+          <FormattedMessage id="welcome" />
+        </p>
         <Avatar image={user?.image} username={user?.name} loading={loading} />
         <Title label={user?.name || ""} loading={loading} spinner={false} />
       </div>
