@@ -1,34 +1,41 @@
 # React-Github-List
 
-Este es un proyecto de ejemplo, no tiene el objetivo de ser una app real.
+This is an example project, it is not intended to be a real app.
 
-La pretensión de este proyecto es conectarse a una API que emula Twitter y hacer peticiones para conseguir información de tweets y usuarios y mostrarlos en pantalla.
+The aim of this project is to connect to an API that emulates Twitter and make requests to obtain information on tweets and users and display them on the screen.
 
-El proyecto ha sido montado con la build tool [Create React App](https://github.com/facebook/create-react-app).
+The project has been set up with the build tool [Create React App](https://github.com/facebook/create-react-app).
+
+## Launch project
+
+To launch the project you just need git clone the projecto, npm install and npm start. The app will be instantiated at http://localhost:3000/
 
 ## Live app
 
 [Live app](https://web-fake-twitter.netlify.app/)
 
-## El proyecto está montado con:
+## Stack:
 
 - [ReactJS](https://es.reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [React Intl / FormatJS](https://formatjs.io/docs/react-intl/)
 - [Typescript](https://github.com/microsoft/TypeScript)
 - [Sass](https://github.com/sass/sass)
 - [Axios](https://github.com/axios/axios)
 
-## La base de datos y la API está mockeada con:
+## Backend mock
 
 - [MockAPI.io](https://mockapi.io/)
 
 ## Pending
 
-- Separar más la lógica del main.tsx
-- Enrutado y nueva página con timeline de un usuario
-- Configuración Jest
-- Test unitarios de útiles
-- Test unitarios de componentes
-- Selector de idioma
+- Error handling
+- Encapsulate react-router-dom componentss
+- Encapsulate react-intl components
+- Jest config
+- Utils functions unitary test
+- Unitary test commons components
+- Language swtich selector in header
 
 # Getting Started with Create React App
 
