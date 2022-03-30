@@ -1,4 +1,4 @@
-# React-Github-List
+# React Web Twitter
 
 This is an example project, it is not intended to be a real app.
 
