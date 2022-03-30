@@ -1,35 +1,19 @@
 $compName: "main";
 
 .#{$compName} {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  grid-template-rows: 60px repeat(2, calc(40vh - 30px - 32px)) 20vh;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &__header {
-    grid-area: 1 / 1 / 2 / 3;
+    height: 56px;
+    z-index: 2;
   }
 
-  &__following {
-    position: relative;
-    grid-area: 2 / 1 / 3 / 2;
-    overflow-y: auto;
-  }
-
-  &__follow {
-    position: relative;
-    grid-area: 3 / 1 / 4 / 2;
-    overflow-y: auto;
-  }
-
-  &__timeline {
-    position: relative;
-    grid-area: 2 / 2 / 4 / 3;
-    overflow-y: auto;
-  }
-
-  &__message {
-    grid-area: 4 / 2 / 5 / 3;
+  &__body {
+    flex-grow: 1;
+    overflow: hidden;
+    max-height: calc(100vh - 56px);
   }
 }

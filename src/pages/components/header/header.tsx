@@ -10,12 +10,7 @@ import "./header.scss";
 export const Header = ({ user, loading = false }: HeaderProps) => {
   const location = useLocation();
 
-  const isHome = (): boolean => {
-    const currentLocation = location.pathname;
-    const notHomeLocation = RoutesEnum.USER;
-    console.log(currentLocation, notHomeLocation);
-    return !location.pathname.includes(RoutesEnum.USER);
-  };
+  const isHome = (): boolean => !location.pathname.includes(RoutesEnum.USER);
 
   return (
     <div className="header">

@@ -1,4 +1,22 @@
 $compName: "user-timeline";
 
 .#{$compName} {
+  height: calc(100vh - 64px);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+
+  &__user {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__timeline {
+    overflow-y: auto;
+  }
 }

@@ -1,38 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useIntl } from "react-intl";
-import { Header } from "../components/header/header";
 import { TweetList } from "../components/tweet-list/tweet-list";
-import { getUser, getUserTweets } from "../../services/twitter-service";
-import { User } from "../../types/user.interface";
+import { getUserTweets } from "../../services/twitter-service";
 import { Tweet } from "../../types/tweet.interface";
+import { Avatar } from "../../commons/avatar/avatar";
+import { Title } from "../../commons/title/title";
+import { UserTimelineProps } from "./user-timeline.interface";
 import "./user-timeline.scss";
 
-function UserTimeline() {
+function UserTimeline({ user, loading }: UserTimelineProps) {
   let { id } = useParams();
 
   const { formatMessage } = useIntl();
 
-  const [user, setUser] = useState<User>();
   const [timeline, setTimeline] = useState<Tweet[]>([]);
-
-  const [loadingUser, setLoadingUser] = useState<boolean>(true);
   const [loadingTimeline, setLoadingTimeline] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!id) {
+    if (!id || !user) {
       return;
     }
-    loadUser(id);
     loadUserTweets(id);
-  }, []);
-
-  const loadUser = async (userId: string) => {
-    setLoadingUser(true);
-    const user = await getUser(userId);
-    setUser(user);
-    setLoadingUser(false);
-  };
+  }, [user]);
 
   const loadUserTweets = async (userId: string) => {
     setLoadingTimeline(true);
@@ -43,7 +33,10 @@ function UserTimeline() {
 
   return (
     <div className="user-timeline">
-      <Header user={user} loading={loadingUser} />
+      <div className="user-timeline__user">
+        <Avatar image={user?.image} username={user?.name} loading={loading} />
+        <Title label={user?.name || ""} loading={loading} spinner={false} />
+      </div>
       <div className="user-timeline__timeline">
         <TweetList
           title={formatMessage({ id: "timeline" })}
